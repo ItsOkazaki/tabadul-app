@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل منصة تبادل الكامل</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #16a34a 0%, #2563eb 50%, #9333ea 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.5em;
+            opacity: 0.9;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .card-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        
+        .card h2 {
+            color: #16a34a;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .card h3 {
+            color: #2563eb;
+            margin: 15px 0 10px;
+            font-size: 1.2em;
+        }
+        
+        .card ul {
+            list-style: none;
+            padding-right: 20px;
+        }
+        
+        .card ul li {
+            margin-bottom: 8px;
+            color: #374151;
+            position: relative;
+        }
+        
+        .card ul li::before {
+            content: "✓";
+            color: #16a34a;
+            font-weight: bold;
+            position: absolute;
+            right: -20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #16a34a, #2563eb);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .btn-large {
+            display: block;
+            text-align: center;
+            font-size: 1.3em;
+            padding: 20px 40px;
+            margin: 20px auto;
+            max-width: 400px;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .section h2 {
+            color: #16a34a;
+            margin-bottom: 20px;
+            font-size: 2em;
+            border-bottom: 3px solid #2563eb;
+            padding-bottom: 10px;
+        }
+        
+        .step {
+            background: #f3f4f6;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-right: 5px solid #16a34a;
+        }
+        
+        .step-number {
+            background: #16a34a;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-left: 15px;
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid #f59e0b;
+            margin: 20px 0;
+        }
+        
+        .highlight h3 {
+            color: #92400e;
+            margin-bottom: 10px;
+        }
+        
+        .code {
+            background: #1f2937;
+            color: #10b981;
+            padding: 15px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            overflow-x: auto;
+            direction: ltr;
+            text-align: left;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #16a34a, #2563eb);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        .testimonial {
+            background: #eff6ff;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            border-right: 5px solid #2563eb;
+        }
+        
+        .testimonial p {
+            font-style: italic;
+            color: #1e40af;
+            margin-bottom: 10px;
+        }
+        
+        .testimonial strong {
+            color: #1e3a8a;
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 30px;
+            margin-top: 40px;
+        }
+        
+        .footer p {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .header p {
+                font-size: 1.2em;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤝 منصة تـبـادل</h1>
+            <p>مهاراتك عندي.. ومهاراتي عندك</p>
+            <p style="margin-top: 10px; font-size: 1.2em;">دليل الاستخدام الشامل</p>
+        </div>
+        
+        <a href="index.html" class="btn btn-large">
+            🚀 ابدأ استخدام التطبيق الآن
+        </a>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">80+</div>
+                <div class="stat-label">مهارة متاحة</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">مجاني</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2</div>
+                <div class="stat-label">دقيقة للتسجيل</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">فرص التعلم</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>✨ المميزات الرئيسية</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-icon">👤</div>
+                    <h2>تسجيل كامل</h2>
+                    <ul>
+                        <li>إنشاء حساب جديد</li>
+                        <li>تسجيل الدخول بالبريد</li>
+                        <li>حفظ البيانات تلقائياً</li>
+                        <li>ملف شخصي مفصل</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">🎯</div>
+                    <h2>اختيار المهارات</h2>
+                    <ul>
+                        <li>80+ مهارة جاهزة</li>
+                        <li>بحث سريع</li>
+                        <li>إضافة مهارات مخصصة</li>
+                        <li>واجهة سهلة</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">🔍</div>
+                    <h2>مطابقة ذكية</h2>
+                    <ul>
+                        <li>خوارزمية متقدمة</li>
+                        <li>نسبة تطابق دقيقة</li>
+                        <li>ترتيب النتائج</li>
+                        <li>فلاتر متقدمة</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">❤️</div>
+                    <h2>المفضلة</h2>
+                    <ul>
+                        <li>حفظ الملفات المهمة</li>
+                        <li>وصول سريع</li>
+                        <li>إدارة سهلة</li>
+                        <li>قائمة منظمة</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">📱</div>
+                    <h2>وضعين للعرض</h2>
+                    <ul>
+                        <li>وضع الهاتف</li>
+                        <li>وضع الكمبيوتر</li>
+                        <li>تصميم متجاوب</li>
+                        <li>تجربة مثالية</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <h2>لوحة تحكم</h2>
+                    <ul>
+                        <li>عرض المطابقات</li>
+                        <li>الملف الشخصي</li>
+                        <li>الإحصائيات</li>
+                        <li>تسجيل الخروج</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📖 كيفية الاستخدام - خطوة بخطوة</h2>
+            
+            <div class="step">
+                <span class="step-number">1</span>
+                <strong>الصفحة الرئيسية</strong>
+                <p>عند فتح التطبيق، ستظهر الصفحة الرئيسية مع شرح الفكرة. اضغط على "ابدأ الآن" للبدء.</p>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">2</span>
+                <strong>إنشاء حساب</strong>
+                <p>أدخل بياناتك: الاسم، البريد الإلكتروني، كلمة المرور، التخصص، والمستوى الدراسي.</p>
+                <div class="highlight">
+                    <h3>💡 نصيحة:</h3>
+                    <p>استخدم بريدك الجامعي لسهولة التعرف على الطلاب من نفس الجامعة.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">3</span>
+                <strong>اختيار المهارات - الخطوة 1</strong>
+                <p>اختر المهارات التي تتقنها وتريد تعليمها للآخرين:</p>
+                <ul>
+                    <li>ابحث في القائمة أو تصفح المهارات</li>
+                    <li>اختر جميع المهارات التي تتقنها</li>
+                    <li>أضف مهارات مخصصة إذا لم تجدها</li>
+                    <li>اضغط "التالي" عند الانتهاء</li>
+                </ul>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">4</span>
+                <strong>اختيار المهارات - الخطوة 2</strong>
+                <p>اختر المهارات التي تريد تعلمها:</p>
+                <ul>
+                    <li>نفس العملية السابقة</li>
+                    <li>اختر المهارات التي ترغب في إتقانها</li>
+                    <li>أضف مهارات مخصصة إذا لزم الأمر</li>
+                    <li>اضغط "اكتمل التسجيل"</li>
+                </ul>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">5</span>
+                <strong>استكشاف المطابقات</strong>
+                <p>سيُظهر لك النظام الطلاب المتوافقين معك:</p>
+                <ul>
+                    <li>نسبة التطابق تظهر باللون (أخضر: عالي، أزرق: متوسط، برتقالي: منخفض)</li>
+                    <li>نقاط التطابق المشتركة</li>
+                    <li>فرصة التبادل المقترحة</li>
+                    <li>احفظ الملفات المهمة بقلب ❤️</li>
+                </ul>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">6</span>
+                <strong>التواصل</strong>
+                <p>عند العثور على طالب متوافق:</p>
+                <ul>
+                    <li>اضغط "تواصل" لإرسال رسالة</li>
+                    <li>اتفقوا على طريقة التبادل</li>
+                    <li>حددوا مواعيد للجلسات</li>
+                    <li>ابدأوا رحلة التعلم المتبادل!</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>💡 أمثلة عملية</h2>
+            
+            <div class="testimonial">
+                <p>"أنا أحمد، أتقن الإنجليزية والبرمجة، وأريد تعلم التصميم والتسويق. وجدت سارة التي تتقن التصميم والتسويق وتريد تعلم الإنجليزية والبرمجة. نسبة التطابق 100%! الآن نتبادل التعلم أسبوعياً."</p>
+                <strong>- مثال واقعي</strong>
+            </div>
+            
+            <div class="highlight">
+                <h3>🎯 سيناريوهات شائعة:</h3>
+                <ul>
+                    <li><strong>طالب هندسة:</strong> يتقن الرياضيات، يريد تعلم البرمجة ← يجد طالب حاسب</li>
+                    <li><strong>طالب أدب إنجليزي:</strong> يتقن الإنجليزية، يريد تعلم التصميم ← يجد طالب تصميم</li>
+                    <li><strong>طالب إدارة أعمال:</strong> يتقن التسويق، يريد تعلم الإنجليزية ← يجد طالب لغة</li>
+                    <li><strong>طالب فنون:</strong> يتقن الفوتوشوب، يريد تعلم البرمجة ← يجد طالب حاسب</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🎪 دليل العرض في البوث الجامعي</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3>📋 التجهيز</h3>
+                    <ul>
+                        <li>جهاز كمبيوتر أو تابلت</li>
+                        <li>شاشة عرض (إذا متاحة)</li>
+                        <li>بطاقات تعريفية</li>
+                        <li>QR Code كبير</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>🎭 سيناريو العرض</h3>
+                    <ul>
+                        <li>الصفحة الرئيسية (30 ثانية)</li>
+                        <li>التسجيل (دقيقة)</li>
+                        <li>اختيار المهارات (دقيقة)</li>
+                        <li>المطابقات (دقيقة)</li>
+                        <li>الأسئلة (دقيقة)</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>💬 نص العرض</h3>
+                    <ul>
+                        <li>ابدأ بسؤال جذاب</li>
+                        <li>اشرح المشكلة</li>
+                        <li>قدّم الحل</li>
+                        <li>اعرض التطبيق</li>
+                        <li>اختم بدعوة للتسجيل</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="highlight">
+                <h3>🎤 نص العرض المقترح:</h3>
+                <div class="code" style="direction: rtl; text-align: right; color: white;">
+السلام عليكم! 👋
+
+هل تمنيت يوماً أن تتعلم مهارة جديدة لكن التكلفة كانت عائقاً؟
+
+نقدم لكم "تبادل"! 🤝
+
+منصة تربط الطلاب لتبادل المهارات مجاناً!
+
+سجّل حسابك، اختر مهاراتك، 
+والنظام يجد لك طلاب متوافقين!
+
+مثال: أنت تجيد الإنجليزية وتريد تعلم البرمجة؟
+النظام يجد لك طالباً يجيد البرمجة ويريد تعلم الإنجليزية!
+
+بدلاً من دفع المال، أنتم تعلّمون بعضكم البعض! 💡
+
+✅ مجاني 100%
+✅ آمن وسهل
+✅ مصمم للطلاب
+
+جربوه الآن! 🚀
+
+مهاراتك عندي.. ومهاراتي عندك! 💚💙
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📊 إحصائيات التطبيق</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>الكود</h3>
+                    <ul>
+                        <li>800+ سطر برمجي</li>
+                        <li>6 مكونات رئيسية</li>
+                        <li>80+ مهارة متاحة</li>
+                        <li>250 KB حجم التطبيق</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>الأداء</h3>
+                    <ul>
+                        <li>&lt; 2 ثانية تحميل</li>
+                        <li>100% متجاوب</li>
+                        <li>يدعم جميع المتصفحات</li>
+                        <li>يعمل بدون إنترنت (محلياً)</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>المميزات</h3>
+                    <ul>
+                        <li>تسجيل ودخول كامل</li>
+                        <li>نظام مطابقة ذكي</li>
+                        <li>قائمة مفضلة</li>
+                        <li>وضعين للعرض</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🚀 كيفية النشر على GitHub Pages</h2>
+            
+            <div class="code">
+# 1. تهيئة Git
+git init
+git add .
+git commit -m "إطلاق تطبيق تبادل"
+
+# 2. إنشاء repository على GitHub
+# اذهب إلى github.com/new
+# أنشئ repo باسم: tabadul
+
+# 3. ربط ورفع
+git remote add origin https://github.com/YOUR_USERNAME/tabadul.git
+git branch -M main
+git push -u origin main
+
+# 4. تفعيل GitHub Pages
+# Settings > Pages
+# Branch: main, Folder: / (root)
+# Save
+
+# 5. الرابط النهائي
+# https://YOUR_USERNAME.github.io/tabadul/
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🎯 الشعارات المقترحة</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>العربية</h3>
+                    <ul>
+                        <li>"مهاراتك عندي.. ومهاراتي عندك"</li>
+                        <li>"علّمني وأعلّمك"</li>
+                        <li>"تبادل المعرفة.. بدون حدود"</li>
+                        <li>"تعلم مجاناً، علّم مجاناً"</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>الإنجليزية</h3>
+                    <ul>
+                        <li>"Your Skill with Me.. My Skill with You"</li>
+                        <li>"Teach Me and I'll Teach You"</li>
+                        <li>"Exchange Knowledge.. Without Limits"</li>
+                        <li>"Learn Free, Teach Free"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <a href="index.html" class="btn btn-large">
+            🎉 جرّب التطبيق الآن!
+        </a>
+        
+        <div class="footer">
+            <p>🤝 <strong>تـبـادل</strong> - منصة تبادل المهارات بين الطلاب</p>
+            <p>💚💙 مهاراتك عندي.. ومهاراتي عندك</p>
+            <p style="margin-top: 20px; font-size: 0.9em;">
+                مشروع جامعي - جميع الحقوق محفوظة © 2026
+            </p>
+        </div>
+    </div>
+</body>
+</html>

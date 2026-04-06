@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة بيانات تجريبية - تبادل</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #16a34a 0%, #2563eb 50%, #9333ea 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #16a34a;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #6b7280;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #16a34a, #2563eb);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: #f3f4f6;
+            color: #374151;
+        }
+        
+        .btn-danger {
+            background: #ef4444;
+            color: white;
+        }
+        
+        .status {
+            padding: 15px;
+            border-radius: 12px;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .status-success {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        .status-info {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        
+        .users-list {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .user-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-right: 4px solid #16a34a;
+        }
+        
+        .user-name {
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 5px;
+        }
+        
+        .user-skills {
+            font-size: 0.9em;
+            color: #6b7280;
+        }
+        
+        .code {
+            background: #1f2937;
+            color: #10b981;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            overflow-x: auto;
+            margin: 15px 0;
+            direction: ltr;
+            text-align: left;
+        }
+        
+        .instructions {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .instructions h3 {
+            color: #92400e;
+            margin-bottom: 10px;
+        }
+        
+        .instructions ol {
+            padding-right: 20px;
+        }
+        
+        .instructions li {
+            margin-bottom: 8px;
+            color: #78350f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 إضافة بيانات تجريبية</h1>
+        <p class="subtitle">أضف مستخدمين تجريبيين لعرض التطبيق في البوث</p>
+        
+        <div id="status" class="status status-info">
+            جاري التحقق من البيانات...
+        </div>
+        
+        <div class="users-list" id="usersList">
+            <p style="text-align: center; color: #6b7280;">لا توجد بيانات بعد</p>
+        </div>
+        
+        <button class="btn btn-primary" onclick="addDemoUsers()">
+            ➕ إضافة 5 مستخدمين تجريبيين
+        </button>
+        
+        <button class="btn btn-secondary" onclick="clearUsers()">
+            🗑️ مسح جميع البيانات
+        </button>
+        
+        <button class="btn btn-secondary" onclick="openApp()">
+            🚀 فتح التطبيق
+        </button>
+        
+        <div class="instructions">
+            <h3>📋 كيفية الاستخدام:</h3>
+            <ol>
+                <li>اضغط "إضافة 5 مستخدمين تجريبيين"</li>
+                <li>سيتم إضافة حسابات جاهزة بمهارات مختلفة</li>
+                <li>افتح التطبيق وسجّل حساب جديد</li>
+                <li>سترى مطابقات مع المستخدمين التجريبيين!</li>
+            </ol>
+        </div>
+        
+        <div class="instructions" style="background: #dbeafe; border-color: #2563eb;">
+            <h3 style="color: #1e40af;">💡 نصيحة للعرض:</h3>
+            <p style="color: #1e3a8a;">
+                قبل العرض في البوث، أضف المستخدمين التجريبيين ثم سجّل حساب جديد 
+                لترَ كيف يعمل نظام المطابقة مباشرة!
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        // Demo users data
+        const demoUsers = [
+            {
+                id: 'demo1',
+                name: 'أحمد محمد',
+                email: 'ahmed@demo.com',
+                password: '123456',
+                phone: '0501234567',
+                major: 'اللغة الإنجليزية',
+                level: '4',
+                skillsKnown: ['اللغة الإنجليزية', 'الترجمة', 'الكتابة الإبداعية'],
+                skillsWanted: ['البرمجة', 'تطوير الويب', 'بايثون'],
+                customSkillsKnown: [],
+                customSkillsWanted: [],
+                createdAt: new Date().toISOString()
+            },
+            {
+                id: 'demo2',
+                name: 'سارة علي',
+                email: 'sarah@demo.com',
+                password: '123456',
+                phone: '0502345678',
+                major: 'تصميم جرافيك',
+                level: '3',
+                skillsKnown: ['تصميم الجرافيك', 'فوتوشوب', 'إليستريتور', 'فيجما'],
+                skillsWanted: ['اللغة الإنجليزية', 'التسويق الرقمي', 'إدارة وسائل التواصل'],
+                customSkillsKnown: [],
+                customSkillsWanted: [],
+                createdAt: new Date().toISOString()
+            },
+            {
+                id: 'demo3',
+                name: 'خالد يوسف',
+                email: 'khaled@demo.com',
+                password: '123456',
+                phone: '0503456789',
+                major: 'علوم الحاسب',
+                level: '5',
+                skillsKnown: ['البرمجة', 'بايثون', 'تطوير الويب', 'جافا سكريبت'],
+                skillsWanted: ['اللغة الإنجليزية', 'إدارة المشاريع', 'التسويق الرقمي'],
+                customSkillsKnown: [],
+                customSkillsWanted: [],
+                createdAt: new Date().toISOString()
+            },
+            {
+                id: 'demo4',
+                name: 'فاطمة أحمد',
+                email: 'fatima@demo.com',
+                password: '123456',
+                phone: '0504567890',
+                major: 'إدارة أعمال',
+                level: '6',
+                skillsKnown: ['إدارة المشاريع', 'التسويق الرقمي', 'إدارة الأعمال'],
+                skillsWanted: ['تطوير الويب', 'تصميم الجرافيك', 'اللغة الإنجليزية'],
+                customSkillsKnown: [],
+                customSkillsWanted: [],
+                createdAt: new Date().toISOString()
+            },
+            {
+                id: 'demo5',
+                name: 'عمر حسن',
+                email: 'omar@demo.com',
+                password: '123456',
+                phone: '0505678901',
+                major: 'تسويق',
+                level: '4',
+                skillsKnown: ['التسويق الرقمي', 'إدارة وسائل التواصل', 'كتابة المحتوى'],
+                skillsWanted: ['البرمجة', 'تصميم الجرافيك', 'الرياضيات'],
+                customSkillsKnown: [],
+                customSkillsWanted: [],
+                createdAt: new Date().toISOString()
+            }
+        ];
+        
+        function getUsers() {
+            const users = localStorage.getItem('tabadul_users');
+            return users ? JSON.parse(users) : [];
+        }
+        
+        function saveUsers(users) {
+            localStorage.setItem('tabadul_users', JSON.stringify(users));
+        }
+        
+        function updateStatus(message, type) {
+            const status = document.getElementById('status');
+            status.textContent = message;
+            status.className = `status status-${type}`;
+        }
+        
+        function displayUsers() {
+            const users = getUsers();
+            const usersList = document.getElementById('usersList');
+            
+            if (users.length === 0) {
+                usersList.innerHTML = '<p style="text-align: center; color: #6b7280;">لا توجد بيانات بعد</p>';
+                return;
+            }
+            
+            usersList.innerHTML = '<h3 style="margin-bottom: 15px; color: #16a34a;">📊 المستخدمون الحاليون:</h3>';
+            
+            users.forEach(user => {
+                const userDiv = document.createElement('div');
+                userDiv.className = 'user-item';
+                userDiv.innerHTML = `
+                    <div class="user-name">👤 ${user.name}</div>
+                    <div class="user-skills">
+                        <div><strong>التخصص:</strong> ${user.major || 'غير محدد'}</div>
+                        <div><strong>يتقن:</strong> ${user.skillsKnown.join('، ') || 'لا يوجد'}</div>
+                        <div><strong>يريد تعلم:</strong> ${user.skillsWanted.join('، ') || 'لا يوجد'}</div>
+                    </div>
+                `;
+                usersList.appendChild(userDiv);
+            });
+        }
+        
+        function addDemoUsers() {
+            const users = getUsers();
+            
+            // Check if demo users already exist
+            const existingDemo = users.find(u => u.id.startsWith('demo'));
+            if (existingDemo) {
+                updateStatus('⚠️ المستخدمون التجريبيون موجودون بالفعل!', 'info');
+                return;
+            }
+            
+            // Add demo users
+            demoUsers.forEach(user => {
+                users.push(user);
+            });
+            
+            saveUsers(users);
+            
+            updateStatus(`✅ تم إضافة ${demoUsers.length} مستخدمين تجريبيين بنجاح!`, 'success');
+            displayUsers();
+            
+            // Show success message
+            setTimeout(() => {
+                alert('✅ تم إضافة المستخدمين التجريبيين بنجاح!\n\nالآن افتح التطبيق وسجّل حساب جديد لترَ المطابقات!');
+            }, 500);
+        }
+        
+        function clearUsers() {
+            if (confirm('⚠️ هل أنت متأكد من مسح جميع البيانات؟\n\nهذا الإجراء لا يمكن التراجع عنه!')) {
+                localStorage.removeItem('tabadul_users');
+                localStorage.removeItem('tabadul_current_user');
+                updateStatus('🗑️ تم مسح جميع البيانات!', 'info');
+                displayUsers();
+            }
+        }
+        
+        function openApp() {
+            window.location.href = 'index.html';
+        }
+        
+        // Initialize
+        window.onload = function() {
+            displayUsers();
+            const users = getUsers();
+            if (users.length > 0) {
+                updateStatus(`📊 يوجد ${users.length} مستخدمين مسجلين`, 'success');
+            } else {
+                updateStatus('📭 لا توجد بيانات بعد. أضف مستخدمين تجريبيين!', 'info');
+            }
+        };
+    </script>
+</body>
+</html>
